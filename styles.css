@@ -1,0 +1,32 @@
+body{
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-image: url('images/image4.jpg'); /* Replace with your image path */
+    background-size: cover; /* Ensures the background covers the entire page */
+    background-position: auto; /* Centers the image */
+    background-repeat: no-repeat; /* Prevents image repetition */
+}
+
+ {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+h1, h2 {
+    color: #333;
+}
+
+form {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+
+input, button {
+    padding: 10px;
+    margin: 5px;
+    width: 100%;
+}

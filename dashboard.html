@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f7f7f7; /* Light background color */
+            color: #333;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            background-image: url('https://source.unsplash.com/random/1600x900'); /* Background image */
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+        }
+
+        h1, h2 {
+            font-size: 30px;
+            margin-bottom: 15px;
+            color: #fff;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.6); /* Text shadow for contrast */
+        }
+
+        /* Content Styling */
+        .scrollable-content {
+            width: 100%;
+            max-width: 800px;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8); /* Light background with transparency */
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+            margin-top: 50px;
+            overflow-y: auto;
+        }
+
+        /* Container Styling */
+        .container {
+            margin: 20px 0;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: #ffffff; /* White background for form sections */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            transition: box-shadow 0.3s ease;
+        }
+
+        .container:hover {
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.2); /* Hover effect */
+        }
+
+        label {
+            font-size: 16px;
+            font-weight: bold;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="number"], input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            margin: 8px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        input[type="number"] {
+            background-color: #f1f1f1;
+            color: #333;
+        }
+
+        input[type="submit"] {
+            background-color: #007bff;
+            color: white;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: none;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        .account-info p {
+            font-size: 18px;
+            line-height: 1.6;
+            margin: 12px 0;
+            color: #444;
+        }
+
+        .account-info p strong {
+            color: #007bff;
+        }
+
+        /* Button for delete confirmation */
+        input[type="submit"]:active {
+            transform: scale(1.1);
+        }
+
+        .confirm-delete-btn {
+            background-color: #f44336; /* Red for delete button */
+            border-radius: 8px;
+            padding: 12px;
+            font-size: 18px;
+            cursor: pointer;
+            color: white;
+        }
+
+        .confirm-delete-btn:hover {
+            background-color: #e53935;
+        }
+    </style>
+</head>
+<body>
+    <div class="scrollable-content">
+        <div class="container account-info">
+            <h1>Welcome, {{ user['username'] }}</h1>
+            <h2>Account Information</h2>
+            <p><strong>Account Number:</strong> {{ user['account_number'] }}</p>
+            <p><strong>Contact No.:</strong> {{ user['contact_no'] }}</p>
+            <p><strong>Balance:</strong> ₹{{ user['amount'] }}</p>
+            <p><strong>City:</strong> {{ user['city'] }}</p>
+            <p><strong>State:</strong> {{ user['state'] }}</p>
+        </div>
+
+        <div class="container">
+            <form action="/credit" method="POST">
+                <h2>Credit Amount</h2>
+                <input type="hidden" name="account_number" value="{{ user['account_number'] }}">
+                <label>Amount:</label><input type="number" name="amount" min="1" required><br>
+                <input type="submit" value="Credit">
+            </form>
+        </div>
+
+        <div class="container">
+            <form action="/debit" method="POST">
+                <h2>Debit Amount</h2>
+                <input type="hidden" name="account_number" value="{{ user['account_number'] }}">
+                <label>Amount:</label><input type="number" name="amount" min="1" required><br>
+                <input type="submit" value="Debit">
+            </form>
+        </div>
+
+        <div class="container">
+            <form action="/delete" method="POST">
+                <h2>Delete Account</h2>
+                <input type="hidden" name="account_number" value="{{ user['account_number'] }}">
+                <input type="submit" class="confirm-delete-btn" value="Delete Account" onclick="return confirm('Are you sure you want to delete this account?');">
+            </form>
+        </div>
+    </div>
+</body>
+</html>

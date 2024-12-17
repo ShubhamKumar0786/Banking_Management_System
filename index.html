@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank Management</title>
+    <style>
+        body 
+        {
+            font-family: 'Poppins', sans-serif;
+            color: #fff;
+            text-align: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            flex-direction: column;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* Full-screen video background */
+        #bg-video {
+            position: absolute;
+            background-color:white;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* Ensures video covers the screen */
+            z-index: -1; /* Places the video behind all content */
+        }
+
+        h1 {
+            font-size: 40px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            transition: all 0.3s ease;
+        }
+
+        h1:hover {
+            color: #ffeb3b;
+            transform: scale(1.1);
+        }
+
+        h2 {
+            font-size: 28px;
+            margin-top: 10px;
+        }
+
+        .logo {
+            max-width: 200px;
+            margin-top: 20px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .logo:hover {
+            transform: scale(1.3);
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            margin-top: 20px;
+            cursor: pointer;
+            border-radius: 4px;
+            font-size: 16px;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        #createAccountForm, #loginForm {
+            display: none;
+        }
+
+        form {
+            background: rgba(250, 250, 250, 0.7); /* Slightly transparent black background for forms */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            margin: 15px;
+            width: 100%;
+            max-width: 400px;
+        }
+
+        input {
+            width: 90%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #555;
+            border-radius: 4px;
+            background: #444;
+            color: white;
+            transition: all 0.3s ease;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #007bff;
+            background: #333;
+        }
+
+        input:hover {
+            border-color: #ff7e5f;
+            background: #555;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            transform: scale(1.05);
+        }
+
+        @media (max-width: 600px) {
+            form {
+                width: 90%;
+            }
+
+            input {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Background Video -->
+    <video id="bg-video" autoplay loop muted>
+        <source src="your-bank-related-video.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <!-- Heading -->
+    <h1>Welcome to Bank Management</h1>
+
+    <!-- Bank Logo Image -->
+    <img src="{{ url_for('static', filename='images/image.png') }}" alt="Bank Logo" class="logo">
+
+    <!-- Buttons for Create Account and Login -->
+    <button onclick="toggleForm('createAccountForm')">Create Account</button>
+    <button onclick="toggleForm('loginForm')">Login</button>
+
+    <!-- Create Account Form -->
+    <form id="createAccountForm" action="/create_account" method="POST">
+        <h2>Create Account</h2>
+        <input type="text" name="username" placeholder="User Name" required><br>
+        <input type="text" name="contact_no" placeholder="Contact No." required><br>
+        <input type="number" name="amount" placeholder="Amount (Min ₹1000)" required><br>
+        <input type="text" name="city" placeholder="City" required><br>
+        <input type="text" name="state" placeholder="State" required><br>
+        <input type="password" name="pin" placeholder="Create 4-digit PIN" required><br>
+        <button type="submit">Create Account</button>
+    </form>
+
+    <!-- Login Form -->
+    <form id="loginForm" action="/login" method="POST">
+        <h2>Login</h2>
+        <input type="text" name="username" placeholder="User Name" required><br>
+        <input type="password" name="pin" placeholder="4-digit PIN" required><br>
+        <button type="submit">Login</button>
+    </form>
+
+    <script>
+        function toggleForm(formId) {
+            document.getElementById('createAccountForm').style.display = 'none';
+            document.getElementById('loginForm').style.display = 'none';
+            document.getElementById(formId).style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>

@@ -62,7 +62,7 @@ A user-friendly **Bank Management System** built with Flask and MySQL to streaml
    python app.py
    ```  
 
-4. Open in your browser: [http://127.0.0.1:5000](http://127.0.0.1:5000).  
+4. Open in your browser: [http://127.0.0.1:5000](http://127.0.0.1:5000]  
 
 ---
 

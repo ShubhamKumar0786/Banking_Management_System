@@ -34,19 +34,19 @@ A user-friendly **Bank Management System** built with Flask and MySQL to streaml
 ## 📸 Preview  
 
 
-![image_1](https://github.com/user-attachments/assets/86622b13-9a44-4383-a41f-a7a22af4ad06)
 
 
 
-![image_2](https://github.com/user-attachments/assets/18c57168-cd53-4ccb-ac16-b205f5e07798)
 
 
 
-![image_3](https://github.com/user-attachments/assets/18d5b171-9ed8-4d8d-bdf0-f78cd2929dfd)
 
 
 
-![image_4](https://github.com/user-attachments/assets/7e5a729e-2e1b-438f-a48d-5fab5e0a0487)
+
+
+
+
 
 ## 🛠️ Setup  
 

@@ -71,4 +71,4 @@ A user-friendly **Bank Management System** built with Flask and MySQL to streaml
 - **Shubham kumar**  
 - 🌐 [GitHub Profile](https://github.com/ShubhamKumar0786https://github.com/ShubhamKumar0786)  
 - 📧 Email:shubhamkashyap9501@gmail.com
-- Linkedin :[Linkedin_link](https://www.linkedin.com/in/shubham9797/)
+- **LinkedIn:** [Shubham_Kumar](https://www.linkedin.com/in/shubham0786/)
